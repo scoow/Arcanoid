@@ -4,14 +4,13 @@ namespace IbragimovAA.Arcanoid
 {
     public class Ball : MonoBehaviour
     {
-        [SerializeField]
+        [SerializeField, Header("Ќачальна€ скорость м€ча")]
         private float _startSpeed;
-        [SerializeField]
+        [SerializeField, Header("ћаксимальна€ скорость м€ча")]
         private float _maxSpeed;
-        [SerializeField]
+        [SerializeField, Header("Ўаг увеличени€ скорости м€ча")]
         private float _speedAddition;
-        [SerializeField]
-        private Vector3 _moveDirection = Vector3.up;
+        private Vector3 _moveDirection = new(-1, -1, -1);
 
         private float _speed = 0;
 
@@ -28,6 +27,7 @@ namespace IbragimovAA.Arcanoid
             gameObject.SetActive(true);
             transform.SetParent(null);
             _speed = _startSpeed;
+            _moveDirection = -_moveDirection;
         }
         public void ReturnToBallHolder(Transform handler)
         {
@@ -42,23 +42,19 @@ namespace IbragimovAA.Arcanoid
             if (_speed > _maxSpeed)
                 _speed = _maxSpeed;
         }
-        public void ReflectX()
+
+        private void OnCollisionEnter(Collision collision)
         {
-            _moveDirection.x = -_moveDirection.x;
-        }
-        public void ReflectY()
-        {
-            _moveDirection.y = -_moveDirection.y;
-        }
-        public void ReflectZ()
-        {
-            _moveDirection.z = -_moveDirection.z;
-        }
-        public void ComplexReflect(Collision other)
-        {
-            Vector3 newAngle = Vector3.Reflect(_moveDirection, other.contacts[0].normal);
-            transform.rotation = Quaternion.Euler(newAngle);//?
-            //_moveDirection.z = -_moveDirection.z;
+            float speed = _moveDirection.magnitude;
+            Vector3 physic = Vector3.Reflect(_moveDirection.normalized, collision.contacts[0].normal);
+            _moveDirection = physic * Mathf.Max(speed, 0);
+
+            Block block = collision.gameObject.GetComponent<Block>();
+            if (block != null)
+            {
+                block.Disable();
+                IncreaseSpeed();
+            }
         }
     }
 }

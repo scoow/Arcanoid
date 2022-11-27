@@ -1,4 +1,3 @@
-using bragimovAA.Arcanoid;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,16 +6,26 @@ namespace IbragimovAA.Arcanoid
 {
     public class PlatformController : MonoBehaviour
     {
-        private Vector3 _moveDirection;
+        [SerializeField, Header("Максимальная скорость платформы")]
+        private float _maxSpeed;
+        private float _speed;
+
+        //расстояние от камеры до края платформы
+        private readonly float _borderWidth = 1;
+
+        private Vector2 _moveDirection;
         protected InputSystem _inputSystem;
 
+        //разрешенные границы движения платформы
         private float _topBorder;
         private float _bottomBorder;
         private float _leftBorder;
         private float _rightBorder;
 
-        private float _borderWidth = 1;
-
+        private void Start()
+        {
+            _speed = _maxSpeed;
+        }
         protected virtual void OnEnable()
         {
             _inputSystem = new InputSystem();
@@ -27,9 +36,10 @@ namespace IbragimovAA.Arcanoid
 
         protected void SetMovement(Vector2 direction)
         {
-            _moveDirection.x += direction.x;
-            _moveDirection.y += direction.y;
+          
+            _moveDirection += direction;
         }
+
         private void Update()
         {
             Move();
@@ -37,21 +47,26 @@ namespace IbragimovAA.Arcanoid
 
         private void Move()
         {
+            CheckBordersCollision();
+
+            transform.Translate(Time.deltaTime * _speed * _moveDirection);
+        }
+
+        private void CheckBordersCollision()
+        {
             if (transform.position.y < _bottomBorder + _borderWidth || transform.position.y > _topBorder - _borderWidth)
                 _moveDirection.y = -_moveDirection.y;
 
             if (transform.position.x < _leftBorder + _borderWidth || transform.position.x > _rightBorder - _borderWidth)
                 _moveDirection.x = -_moveDirection.x;
-
-            transform.Translate(Time.deltaTime * _moveDirection);
         }
 
         private void OnDisable() => _inputSystem.Disable();
 
+        //вычисление разрешенных границ движения платформы
         private void DefineLevelBorders()
         {
-            List<CollisionTrigger> borders = new List<CollisionTrigger>();
-            borders = FindObjectsOfType<CollisionTrigger>().ToList();
+            List<CollisionTrigger> borders = FindObjectsOfType<CollisionTrigger>().ToList();
             _topBorder = borders.Max(t => t.transform.position.y);
             _bottomBorder = borders.Min(t => t.transform.position.y);
             _rightBorder = borders.Max(t => t.transform.position.x);

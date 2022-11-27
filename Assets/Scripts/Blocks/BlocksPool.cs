@@ -4,8 +4,12 @@ namespace IbragimovAA.Arcanoid
 {
     public class BlocksPool : BasePool<Block>
     {
-        public BlocksPool(Block prefab, Transform parent, int count = 1) : base(prefab, parent)
+        private int _randomRange;
+        private int _randomAngle;
+        public BlocksPool(Block prefab, Transform parent, int count = 1, int randomRange = 4, int randomAngle = 45) : base(prefab, parent)
         {
+            _randomRange = randomRange;
+            _randomAngle = randomAngle;
             Init(count);
         }
 
@@ -19,7 +23,7 @@ namespace IbragimovAA.Arcanoid
 
         protected override Block GetCreated()
         {
-            return RandomizePositionAndRotation(4, 45);//вынести в инспектор
+            return RandomizePositionAndRotation(_randomRange, _randomAngle);
         }
 
         private Block RandomizePositionAndRotation(float randomPosition, float randomAngle)

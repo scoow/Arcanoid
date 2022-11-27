@@ -166,10 +166,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285307818}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &285307821
@@ -357,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345923812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 12}
+  m_LocalPosition: {x: 0, y: 5, z: 10}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e03202e207d4f342906a691cec29eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeOfTrigger: 3
+  _typeOfTrigger: 2
 --- !u!1 &362721722
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +465,6 @@ GameObject:
   - component: {fileID: 548309043}
   - component: {fileID: 548309042}
   - component: {fileID: 548309046}
-  - component: {fileID: 548309047}
   m_Layer: 0
   m_Name: FirstPlayerPlatform
   m_TagString: Platform
@@ -481,7 +480,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548309041}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -544,7 +543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548309041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalPosition: {x: 0, y: 5, z: -9}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -565,19 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d7387c172d25f45b6614291aaaed25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &548309047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548309041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e03202e207d4f342906a691cec29eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _typeOfTrigger: 2
+  _maxSpeed: 2
 --- !u!1 &600371760
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,10 +643,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604253677}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &604253680
@@ -782,7 +769,6 @@ GameObject:
   - component: {fileID: 651351451}
   - component: {fileID: 651351450}
   - component: {fileID: 651351454}
-  - component: {fileID: 651351455}
   m_Layer: 0
   m_Name: SecondPlayerPlatform
   m_TagString: Platform
@@ -798,7 +784,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651351449}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -861,7 +847,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651351449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 10}
+  m_LocalPosition: {x: 0, y: 5, z: 9}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -882,19 +868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682e94cfa7533e4c8cd4b3afd952c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &651351455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651351449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e03202e207d4f342906a691cec29eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _typeOfTrigger: 2
+  _maxSpeed: 2
 --- !u!1 &678660902
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifes: 2
-  _blocksCount: 5
+  _blocksCount: 10
+  _randomRange: 4
+  _randomAngle: 45
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,10 +1119,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607352962}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1607352965
@@ -1378,7 +1354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954094949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: -12}
+  m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1397,7 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e03202e207d4f342906a691cec29eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeOfTrigger: 3
+  _typeOfTrigger: 2
 --- !u!1 &1975274184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,10 +1417,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975274184}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1975274187
@@ -1524,6 +1500,10 @@ PrefabInstance:
     - target: {fileID: 8894381581060506578, guid: f0a94d54955830f49ab89226c3e1ac7a, type: 3}
       propertyPath: _startSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8894381581060506578, guid: f0a94d54955830f49ab89226c3e1ac7a, type: 3}
+      propertyPath: _speedAddition
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8894381581060506578, guid: f0a94d54955830f49ab89226c3e1ac7a, type: 3}
       propertyPath: _moveDirection.x

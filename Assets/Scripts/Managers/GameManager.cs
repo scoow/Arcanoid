@@ -23,6 +23,7 @@ using UnityEngine;
 Платформы игроков должны обладать инерцией. Инерцию можно реализовать через физику или стандартной логикой перемещения. - СДЕЛАНО
 
 При ударах о любую поверхность, шарик должен отражаться, согласно законам реальной физики. - исправить отражение от блоков
+
 Шарик может обладать компонентом физического тела, но он не должен перемещаться и отражаться с помощью физики. - СДЕЛАНО
 
 Собрать несколько тоннелей на одной игровой сцене, реализовать переключение на новый тоннель (то есть, по сути, переход на новый уровень),
@@ -52,10 +53,14 @@ namespace IbragimovAA.Arcanoid
         private Transform _secondPlayerBallHolder;
         private Ball _ball;
 
-        [SerializeField]
+        [SerializeField, Header("Количество жизней")]
         private int _lifes;
-        [SerializeField]
+        [SerializeField, Header("Количество генерируемых блоков")]
         private int _blocksCount;
+        [SerializeField, Header("Диапазон расстояния от центра генерируемых блоков ")]
+        private int _randomRange;
+        [SerializeField, Header("Диапазон поворота генерируемых блоков ")]
+        private int _randomAngle;
 
         private Players _currentPlayer;
         private void Awake()
@@ -79,7 +84,7 @@ namespace IbragimovAA.Arcanoid
         private void InitializeBlocksPool()
         {
             _blocksContainer = FindObjectOfType<BlocksContainer>();
-            _blocksPool = new(Resources.Load<Block>("Prefabs/Block"), _blocksContainer.transform, _blocksCount);
+            _blocksPool = new(Resources.Load<Block>("Prefabs/Block"), _blocksContainer.transform, _blocksCount, _randomRange, _randomAngle);
         }
 
         public void LoseLife()

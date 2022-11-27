@@ -1,7 +1,6 @@
-using IbragimovAA.Arcanoid;
 using UnityEngine;
 
-namespace bragimovAA.Arcanoid
+namespace IbragimovAA.Arcanoid
 {
     public class CollisionTrigger : MonoBehaviour
     {
@@ -16,25 +15,8 @@ namespace bragimovAA.Arcanoid
 
             switch (_typeOfTrigger)
             {
-                case TypeOfTrigger.Wall:
-                    ball.ReflectX();
-                    break;
-                case TypeOfTrigger.FloorOrCeiling:
-                    ball.ReflectY();
-                    break;
-                case TypeOfTrigger.Platform:
-                    ball.ReflectZ();
-                    break;
                 case TypeOfTrigger.Gate:
                     GameManager.instance.LoseLife();
-                    break;
-                case TypeOfTrigger.Block:
-                    /*ball.ReflectX();//Complex
-                    ball.ReflectY();
-                    ball.ReflectZ();*/
-                    //ball.ComplexReflect(other);
-                    ball.IncreaseSpeed();
-                    //gameObject.SetActive(false);
                     break;
                 default:
                     break;
@@ -44,9 +26,7 @@ namespace bragimovAA.Arcanoid
         {
             Wall,
             FloorOrCeiling,
-            Platform,
             Gate,
-            Block
         }
     }
 }

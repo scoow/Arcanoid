@@ -1,3 +1,6 @@
+using bragimovAA.Arcanoid;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace IbragimovAA.Arcanoid
@@ -7,10 +10,19 @@ namespace IbragimovAA.Arcanoid
         private Vector3 _moveDirection;
         protected InputSystem _inputSystem;
 
+        private float _topBorder;
+        private float _bottomBorder;
+        private float _leftBorder;
+        private float _rightBorder;
+
+        private float _borderWidth = 1;
+
         protected virtual void OnEnable()
         {
             _inputSystem = new InputSystem();
             _inputSystem.Enable();
+
+            DefineLevelBorders();
         }
 
         protected void SetMovement(Vector2 direction)
@@ -20,8 +32,33 @@ namespace IbragimovAA.Arcanoid
         }
         private void Update()
         {
+            Move();
+        }
+
+        private void Move()
+        {
+            if (transform.position.y < _bottomBorder + _borderWidth)
+                return;
+/*            if (transform.position.y > _topBorder - _borderWidth)
+                return;
+            if (transform.position.x < _leftBorder + _borderWidth)
+                return;
+            if (transform.position.x < _rightBorder - _borderWidth)
+                return;*/
+
             transform.Translate(Time.deltaTime * _moveDirection);
         }
+
         private void OnDisable() => _inputSystem.Disable();
+
+        private void DefineLevelBorders()
+        {
+            List<CollisionTrigger> borders = new List<CollisionTrigger>();
+            borders = FindObjectsOfType<CollisionTrigger>().ToList();
+            _topBorder = borders.Max(t => t.transform.position.y);
+            _bottomBorder = borders.Min(t => t.transform.position.y);
+            _rightBorder = borders.Max(t => t.transform.position.x);
+            _leftBorder = borders.Min(t => t.transform.position.x);
+        }
     }
 }

@@ -32,6 +32,11 @@ namespace IbragimovAA.Arcanoid
             gameObject.SetActive(true);
             _speed = _startSpeed;
         }
+        public void ReturnToBallHolder(Transform handler)
+        {
+            transform.position = handler.position;
+        }
+
         public void IncreaseSpeed()
         {
             _speed += _speedAddition;

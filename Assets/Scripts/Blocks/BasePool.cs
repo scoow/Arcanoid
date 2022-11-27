@@ -20,7 +20,7 @@ namespace IbragimovAA.Arcanoid
         {
             for (int i = 0; i < count; i++)
             {
-                PoolUp(true);//
+                PoolUp(false);
             }
         }
 

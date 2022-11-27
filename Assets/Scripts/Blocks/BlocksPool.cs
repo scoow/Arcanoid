@@ -9,10 +9,17 @@ namespace IbragimovAA.Arcanoid
             Init(count);
         }
 
+        public override void Init(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                PoolUp(true);//заменено на true, чтобы блоки были видимы на старте
+            }
+        }
 
         protected override Block GetCreated()
         {
-            return RandomizePositionAndRotation(4, 45);
+            return RandomizePositionAndRotation(4, 45);//вынести в инспектор
         }
 
         private Block RandomizePositionAndRotation(float randomPosition, float randomAngle)

@@ -36,8 +36,9 @@ namespace IbragimovAA.Arcanoid
 
         protected void SetMovement(Vector2 direction)
         {
-          
             _moveDirection += direction;
+            if (_moveDirection.magnitude > _maxSpeed)
+                _moveDirection *= 0.8f;
         }
 
         private void Update()
@@ -47,18 +48,18 @@ namespace IbragimovAA.Arcanoid
 
         private void Move()
         {
-            CheckBordersCollision();
-
             transform.Translate(Time.deltaTime * _speed * _moveDirection);
+            CheckBordersCollision();
         }
 
         private void CheckBordersCollision()
         {
-            if (transform.position.y < _bottomBorder + _borderWidth || transform.position.y > _topBorder - _borderWidth)
-                _moveDirection.y = -_moveDirection.y;
+            var position = transform.position;
 
-            if (transform.position.x < _leftBorder + _borderWidth || transform.position.x > _rightBorder - _borderWidth)
-                _moveDirection.x = -_moveDirection.x;
+            position.x = Mathf.Clamp(position.x,  _leftBorder + _borderWidth,  _rightBorder - _borderWidth);
+            position.y = Mathf.Clamp(position.y, _bottomBorder + _borderWidth, _topBorder - _borderWidth);
+
+            transform.position = position;
         }
 
         private void OnDisable() => _inputSystem.Disable();

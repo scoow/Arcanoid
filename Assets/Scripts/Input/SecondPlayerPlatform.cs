@@ -8,7 +8,7 @@ namespace IbragimovAA.Arcanoid
         {
             base.OnEnable();
             _inputSystem.SecondPlatform.Movement.performed += callbackContext => SetMovement(callbackContext.ReadValue<Vector2>());
-           // _inputSystem.SecondPlatform.Launch.performed += callbackContext => GameManager.instance.StartGame();
+            _inputSystem.SecondPlatform.Launch.performed += callbackContext => GameManager.instance.StartGame();
         }
     }
 }

@@ -29,11 +29,12 @@ namespace bragimovAA.Arcanoid
                     GameManager.instance.LoseLife();
                     break;
                 case TypeOfTrigger.Block:
-                    ball.ReflectX();
+                    /*ball.ReflectX();//Complex
                     ball.ReflectY();
-                    ball.ReflectZ();
+                    ball.ReflectZ();*/
+                    //ball.ComplexReflect(other);
                     ball.IncreaseSpeed();
-                    gameObject.SetActive(false);
+                    //gameObject.SetActive(false);
                     break;
                 default:
                     break;

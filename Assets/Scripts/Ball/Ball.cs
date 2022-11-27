@@ -26,13 +26,14 @@ namespace IbragimovAA.Arcanoid
         public void Launch()
         {
             gameObject.SetActive(true);
+            transform.SetParent(null);
             _speed = _startSpeed;
-            Debug.Log("Ball launched");//
         }
         public void ReturnToBallHolder(Transform handler)
         {
             _speed = 0;
             transform.position = handler.position;
+            transform.SetParent(handler);
         }
 
         public void IncreaseSpeed()
@@ -53,14 +54,11 @@ namespace IbragimovAA.Arcanoid
         {
             _moveDirection.z = -_moveDirection.z;
         }
-        public void ComplexReflect(Transform other)
+        public void ComplexReflect(Collision other)
         {
+            Vector3 newAngle = Vector3.Reflect(_moveDirection, other.contacts[0].normal);
+            transform.rotation = Quaternion.Euler(newAngle);//?
             //_moveDirection.z = -_moveDirection.z;
-        }
-
-        public void Deactivate()
-        {
-            gameObject.SetActive(false);
         }
     }
 }

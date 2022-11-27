@@ -37,14 +37,11 @@ namespace IbragimovAA.Arcanoid
 
         private void Move()
         {
-            if (transform.position.y < _bottomBorder + _borderWidth)
-                return;
-/*            if (transform.position.y > _topBorder - _borderWidth)
-                return;
-            if (transform.position.x < _leftBorder + _borderWidth)
-                return;
-            if (transform.position.x < _rightBorder - _borderWidth)
-                return;*/
+            if (transform.position.y < _bottomBorder + _borderWidth || transform.position.y > _topBorder - _borderWidth)
+                _moveDirection.y = -_moveDirection.y;
+
+            if (transform.position.x < _leftBorder + _borderWidth || transform.position.x > _rightBorder - _borderWidth)
+                _moveDirection.x = -_moveDirection.x;
 
             transform.Translate(Time.deltaTime * _moveDirection);
         }

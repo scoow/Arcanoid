@@ -55,6 +55,11 @@ namespace IbragimovAA.Arcanoid
         {
             _moveDirection.z = -_moveDirection.z;
         }
+        public void ComplexReflect(Transform other)
+        {
+            //_moveDirection.z = -_moveDirection.z;
+        }
+
         public void Deactivate()
         {
             gameObject.SetActive(false);

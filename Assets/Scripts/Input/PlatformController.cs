@@ -1,23 +1,27 @@
 using UnityEngine;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace IbragimovAA.Arcanoid
 {
     public class PlatformController : MonoBehaviour
     {
-        private InputSystem _inputSystem;
-        private void OnEnable()
+        private Vector3 _moveDirection;
+        protected InputSystem _inputSystem;
+        protected virtual void OnEnable()
         {
             _inputSystem = new InputSystem();
             _inputSystem.Enable();
-
-            _inputSystem.Platform.WASD.performed += callbackContext => SetMovement(callbackContext.ReadValue<Vector2>().x, callbackContext.ReadValue<Vector2>().y);
         }
 
-        private void SetMovement(float horizontal, float vertical)
+        protected void SetMovement(Vector2 direction)
         {
-/*            movementVector.x = horizontal * movementSpeed;
-            movementVector.z = vertical * movementSpeed;*/
+            _moveDirection.x += direction.x;
+            _moveDirection.y += direction.y;
         }
+        private void Update()
+        {
+            transform.Translate(Time.deltaTime * _moveDirection);
+        }
+        private void OnDisable() => _inputSystem.Disable();
+
     }
 }

@@ -26,22 +26,22 @@ namespace IbragimovAA.Arcanoid
     ""name"": ""InputSystem"",
     ""maps"": [
         {
-            ""name"": ""Platform"",
+            ""name"": ""FirstPlatform"",
             ""id"": ""d89d0b05-d74a-47fe-a8c0-219c1e520fbc"",
             ""actions"": [
                 {
-                    ""name"": ""WASD"",
-                    ""type"": ""Button"",
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
                     ""id"": ""77f4c9a8-5bef-4155-932d-cb9a5295d980"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Arrows"",
+                    ""name"": ""Launch"",
                     ""type"": ""Button"",
-                    ""id"": ""64cc547a-6560-42d6-91af-1e0e0c301961"",
+                    ""id"": ""e764335d-3430-4198-9774-3b76c93dcd20"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -50,146 +50,176 @@ namespace IbragimovAA.Arcanoid
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Vertical"",
+                    ""name"": ""WASD"",
                     ""id"": ""6d4937aa-ee51-4a17-8169-7f30d313d164"",
-                    ""path"": ""1DAxis"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WASD"",
+                    ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
+                    ""name"": ""Up"",
                     ""id"": ""838533a7-724c-410b-9036-56e25fc08c8a"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WASD"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""ee9b6364-3851-476d-ad4a-a42a1cdf0594"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WASD"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Horizontal"",
-                    ""id"": ""1ae3e6f3-eddb-4f93-a26e-3fcf53ddd181"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WASD"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""f34d6d6a-7903-4059-883f-4bd4c5ce077d"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WASD"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""cb1d9499-d0f2-4f74-9187-884362947f5f"",
+                    ""name"": ""Down"",
+                    ""id"": ""ee9b6364-3851-476d-ad4a-a42a1cdf0594"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WASD"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Vertical"",
-                    ""id"": ""3285d245-b505-4471-a5be-a6ac3f08832d"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""Left"",
+                    ""id"": ""33bfc45b-7bd5-410f-ae11-1ad84f136e80"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Arrows"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""5d745647-1cb5-4e21-9102-164c13bb49d1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b6de7c5-20e5-4a3e-a8ac-b70dbb33e83f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Launch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""SecondPlatform"",
+            ""id"": ""01ad6656-417d-4902-8c63-ac19e66a13ed"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""c067bc4d-949e-4cea-838f-4a5ecf858ea6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Launch"",
+                    ""type"": ""Button"",
+                    ""id"": ""d83b5db1-5def-40a8-9e42-708695e7a425"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""f89fe162-bde6-420e-93be-b245c8f90c19"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""bb2c025d-edec-4416-9dd5-15f70693ccfb"",
-                    ""path"": """",
+                    ""name"": ""Up"",
+                    ""id"": ""0f3f1d2c-e0b6-41b4-a1ec-1ce480c75a53"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Arrows"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""4f06851a-cca5-4075-b6a8-1f72d88e351b"",
-                    ""path"": """",
+                    ""name"": ""Down"",
+                    ""id"": ""3cf43770-1f60-4bb2-b5c7-de1d0a80989b"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Arrows"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Horizontal"",
-                    ""id"": ""26fe04f9-b3b0-493c-b2e4-f3b45ddd2a43"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""Left"",
+                    ""id"": ""6a09a72b-ff58-4877-81a6-07c9d3acd74e"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Arrows"",
-                    ""isComposite"": true,
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""b72feb0b-79f3-4bfa-a292-86c6f323d570"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e78488eb-d523-464f-918a-3e5a77639b7c"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Launch"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""82e9246d-40ca-4e41-991d-27b9b8da4c64"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Arrows"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""5eb54201-af96-43ee-a2e4-26ec9726c2ee"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Arrows"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-            // Platform
-            m_Platform = asset.FindActionMap("Platform", throwIfNotFound: true);
-            m_Platform_WASD = m_Platform.FindAction("WASD", throwIfNotFound: true);
-            m_Platform_Arrows = m_Platform.FindAction("Arrows", throwIfNotFound: true);
+            // FirstPlatform
+            m_FirstPlatform = asset.FindActionMap("FirstPlatform", throwIfNotFound: true);
+            m_FirstPlatform_Movement = m_FirstPlatform.FindAction("Movement", throwIfNotFound: true);
+            m_FirstPlatform_Launch = m_FirstPlatform.FindAction("Launch", throwIfNotFound: true);
+            // SecondPlatform
+            m_SecondPlatform = asset.FindActionMap("SecondPlatform", throwIfNotFound: true);
+            m_SecondPlatform_Movement = m_SecondPlatform.FindAction("Movement", throwIfNotFound: true);
+            m_SecondPlatform_Launch = m_SecondPlatform.FindAction("Launch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -246,50 +276,96 @@ namespace IbragimovAA.Arcanoid
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // Platform
-        private readonly InputActionMap m_Platform;
-        private IPlatformActions m_PlatformActionsCallbackInterface;
-        private readonly InputAction m_Platform_WASD;
-        private readonly InputAction m_Platform_Arrows;
-        public struct PlatformActions
+        // FirstPlatform
+        private readonly InputActionMap m_FirstPlatform;
+        private IFirstPlatformActions m_FirstPlatformActionsCallbackInterface;
+        private readonly InputAction m_FirstPlatform_Movement;
+        private readonly InputAction m_FirstPlatform_Launch;
+        public struct FirstPlatformActions
         {
             private @InputSystem m_Wrapper;
-            public PlatformActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
-            public InputAction @WASD => m_Wrapper.m_Platform_WASD;
-            public InputAction @Arrows => m_Wrapper.m_Platform_Arrows;
-            public InputActionMap Get() { return m_Wrapper.m_Platform; }
+            public FirstPlatformActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Movement => m_Wrapper.m_FirstPlatform_Movement;
+            public InputAction @Launch => m_Wrapper.m_FirstPlatform_Launch;
+            public InputActionMap Get() { return m_Wrapper.m_FirstPlatform; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlatformActions set) { return set.Get(); }
-            public void SetCallbacks(IPlatformActions instance)
+            public static implicit operator InputActionMap(FirstPlatformActions set) { return set.Get(); }
+            public void SetCallbacks(IFirstPlatformActions instance)
             {
-                if (m_Wrapper.m_PlatformActionsCallbackInterface != null)
+                if (m_Wrapper.m_FirstPlatformActionsCallbackInterface != null)
                 {
-                    @WASD.started -= m_Wrapper.m_PlatformActionsCallbackInterface.OnWASD;
-                    @WASD.performed -= m_Wrapper.m_PlatformActionsCallbackInterface.OnWASD;
-                    @WASD.canceled -= m_Wrapper.m_PlatformActionsCallbackInterface.OnWASD;
-                    @Arrows.started -= m_Wrapper.m_PlatformActionsCallbackInterface.OnArrows;
-                    @Arrows.performed -= m_Wrapper.m_PlatformActionsCallbackInterface.OnArrows;
-                    @Arrows.canceled -= m_Wrapper.m_PlatformActionsCallbackInterface.OnArrows;
+                    @Movement.started -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnMovement;
+                    @Movement.performed -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnMovement;
+                    @Movement.canceled -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnMovement;
+                    @Launch.started -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnLaunch;
+                    @Launch.performed -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnLaunch;
+                    @Launch.canceled -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnLaunch;
                 }
-                m_Wrapper.m_PlatformActionsCallbackInterface = instance;
+                m_Wrapper.m_FirstPlatformActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @WASD.started += instance.OnWASD;
-                    @WASD.performed += instance.OnWASD;
-                    @WASD.canceled += instance.OnWASD;
-                    @Arrows.started += instance.OnArrows;
-                    @Arrows.performed += instance.OnArrows;
-                    @Arrows.canceled += instance.OnArrows;
+                    @Movement.started += instance.OnMovement;
+                    @Movement.performed += instance.OnMovement;
+                    @Movement.canceled += instance.OnMovement;
+                    @Launch.started += instance.OnLaunch;
+                    @Launch.performed += instance.OnLaunch;
+                    @Launch.canceled += instance.OnLaunch;
                 }
             }
         }
-        public PlatformActions @Platform => new PlatformActions(this);
-        public interface IPlatformActions
+        public FirstPlatformActions @FirstPlatform => new FirstPlatformActions(this);
+
+        // SecondPlatform
+        private readonly InputActionMap m_SecondPlatform;
+        private ISecondPlatformActions m_SecondPlatformActionsCallbackInterface;
+        private readonly InputAction m_SecondPlatform_Movement;
+        private readonly InputAction m_SecondPlatform_Launch;
+        public struct SecondPlatformActions
         {
-            void OnWASD(InputAction.CallbackContext context);
-            void OnArrows(InputAction.CallbackContext context);
+            private @InputSystem m_Wrapper;
+            public SecondPlatformActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Movement => m_Wrapper.m_SecondPlatform_Movement;
+            public InputAction @Launch => m_Wrapper.m_SecondPlatform_Launch;
+            public InputActionMap Get() { return m_Wrapper.m_SecondPlatform; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(SecondPlatformActions set) { return set.Get(); }
+            public void SetCallbacks(ISecondPlatformActions instance)
+            {
+                if (m_Wrapper.m_SecondPlatformActionsCallbackInterface != null)
+                {
+                    @Movement.started -= m_Wrapper.m_SecondPlatformActionsCallbackInterface.OnMovement;
+                    @Movement.performed -= m_Wrapper.m_SecondPlatformActionsCallbackInterface.OnMovement;
+                    @Movement.canceled -= m_Wrapper.m_SecondPlatformActionsCallbackInterface.OnMovement;
+                    @Launch.started -= m_Wrapper.m_SecondPlatformActionsCallbackInterface.OnLaunch;
+                    @Launch.performed -= m_Wrapper.m_SecondPlatformActionsCallbackInterface.OnLaunch;
+                    @Launch.canceled -= m_Wrapper.m_SecondPlatformActionsCallbackInterface.OnLaunch;
+                }
+                m_Wrapper.m_SecondPlatformActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Movement.started += instance.OnMovement;
+                    @Movement.performed += instance.OnMovement;
+                    @Movement.canceled += instance.OnMovement;
+                    @Launch.started += instance.OnLaunch;
+                    @Launch.performed += instance.OnLaunch;
+                    @Launch.canceled += instance.OnLaunch;
+                }
+            }
+        }
+        public SecondPlatformActions @SecondPlatform => new SecondPlatformActions(this);
+        public interface IFirstPlatformActions
+        {
+            void OnMovement(InputAction.CallbackContext context);
+            void OnLaunch(InputAction.CallbackContext context);
+        }
+        public interface ISecondPlatformActions
+        {
+            void OnMovement(InputAction.CallbackContext context);
+            void OnLaunch(InputAction.CallbackContext context);
         }
     }
 }

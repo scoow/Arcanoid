@@ -177,7 +177,7 @@ namespace IbragimovAA.Arcanoid
                 {
                     ""name"": ""Left"",
                     ""id"": ""6a09a72b-ff58-4877-81a6-07c9d3acd74e"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -188,7 +188,7 @@ namespace IbragimovAA.Arcanoid
                 {
                     ""name"": ""Right"",
                     ""id"": ""b72feb0b-79f3-4bfa-a292-86c6f323d570"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

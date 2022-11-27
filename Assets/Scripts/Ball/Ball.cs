@@ -7,18 +7,14 @@ namespace IbragimovAA.Arcanoid
         [SerializeField]
         private float _startSpeed;
         [SerializeField]
-        private float _maxSpeed = 9f;
-
-        private float _speed = 0;
+        private float _maxSpeed;
         [SerializeField]
-        private float _speedAddition = 1;
+        private float _speedAddition;
         [SerializeField]
         private Vector3 _moveDirection = Vector3.up;
 
-        private void Start()
-        {
-            Launch();
-        }
+        private float _speed = 0;
+
         private void Update()
         {
             Move();
@@ -31,9 +27,11 @@ namespace IbragimovAA.Arcanoid
         {
             gameObject.SetActive(true);
             _speed = _startSpeed;
+            Debug.Log("Ball launched");//
         }
         public void ReturnToBallHolder(Transform handler)
         {
+            _speed = 0;
             transform.position = handler.position;
         }
 

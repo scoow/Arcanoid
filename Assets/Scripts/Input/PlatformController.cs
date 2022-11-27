@@ -6,6 +6,7 @@ namespace IbragimovAA.Arcanoid
     {
         private Vector3 _moveDirection;
         protected InputSystem _inputSystem;
+
         protected virtual void OnEnable()
         {
             _inputSystem = new InputSystem();
@@ -22,6 +23,5 @@ namespace IbragimovAA.Arcanoid
             transform.Translate(Time.deltaTime * _moveDirection);
         }
         private void OnDisable() => _inputSystem.Disable();
-
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 Камера игрока, перед которой расположен невидимая платформа для отбивания шарика; - СДЕЛАНО
 
 Квадратный тоннель, стены и пол которого не разрушаются, за игроком располагаются невидимые ворота,
-при пересечении с которыми мяч возвращается к игроку, а также уменьшается количество жизней; - добавить возвращение к игроку, запуск, счётчик хп
+при пересечении с которыми мяч возвращается к игроку, а также уменьшается количество жизней; - СДЕЛАНО
 
 Разрушаемые блоки, расположенные в центре тоннеля; - СДЕЛАНО
 
@@ -13,9 +13,11 @@ using UnityEngine;
 
 Добавить второго игрока, при этом в редакторе должно быть два окна Game, одно для первого игрока, второе для второго. - СДЕЛАНО
 
-Управление платформой первого игрока обеспечивается клавишами WASD, второго - стрелками клавиатуры; - сделать. Добавить определение границ уровня
+Управление платформой первого игрока обеспечивается клавишами WASD, второго - стрелками клавиатуры; - СДЕЛАНО
 
-За вторым игроком вместо невидимой стены, тоже должны располагаться ворота. Количество жизней у игроков общее. - сделать
+Добавить определение границ уровня - сделать
+
+За вторым игроком вместо невидимой стены, тоже должны располагаться ворота. Количество жизней у игроков общее. - СДЕЛАНО
 
 Платформы игроков должны обладать инерцией. Инерцию можно реализовать через физику или стандартной логикой перемещения. - СДЕЛАНО. Улучшить
 
@@ -26,7 +28,8 @@ using UnityEngine;
 после уничтожения всех блоков в первом тоннеле. - сделать
 
 Сделать случайный наклон блоков при старте уровня, для того, чтобы плоскость соприкосновения с блоками не была перпендикулярна тоннелю. - СДЕЛАНО
-Добавить ускорение шарику при ударах по блокам: - сделать
+
+Добавить ускорение шарику при ударах по блокам: - СДЕЛАНО
 
 При упускании шарика, его скорость возвращается к стандартной; - СДЕЛАНО
 
@@ -39,6 +42,8 @@ namespace IbragimovAA.Arcanoid
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager instance;
+
         private BlocksContainer _blocksContainer;
         private BlocksPool _blocksPool;
 
@@ -51,6 +56,12 @@ namespace IbragimovAA.Arcanoid
         [SerializeField]
         private int _blocksCount;
 
+        private Players _currentPlayer;
+        private void Awake()
+        {
+            instance = this;
+        }
+
         void Start()
         {
             _firstPlayerBallHolder = FindObjectOfType<FirstPlayerBallHolder>().transform;
@@ -60,6 +71,8 @@ namespace IbragimovAA.Arcanoid
             _ball.ReturnToBallHolder(_firstPlayerBallHolder);
 
             InitializeBlocksPool();
+
+            _currentPlayer = Players.First;
         }
 
         private void InitializeBlocksPool()
@@ -68,18 +81,43 @@ namespace IbragimovAA.Arcanoid
             _blocksPool = new(Resources.Load<Block>("Prefabs/Block"), _blocksContainer.transform, _blocksCount);
         }
 
-        public void LoseLife()//singleton?
+        public void LoseLife()
         {
             _lifes--;
-            _ball.ReturnToBallHolder(_firstPlayerBallHolder);
 
-            if (_lifes < 0)
+            _currentPlayer = (Players)(((int)_currentPlayer + 1) % 2);
+
+            Debug.Log($"Lifes left {_lifes}");
+
+            switch (_currentPlayer)
+            {
+                case Players.First:
+                    _ball.ReturnToBallHolder(_firstPlayerBallHolder);
+                    break;
+                case Players.Second:
+                    _ball.ReturnToBallHolder(_secondPlayerBallHolder);
+                    break;
+            }
+
+            if (_lifes < 1)              
                 EndGame();
         }
 
         private void EndGame()
         {
+            Debug.Log("Game Over");
             UnityEditor.EditorApplication.isPaused = true;
         }    
+
+        public void StartGame()
+        {
+            _ball.Launch();
+        }
+
+        private enum Players
+        {
+            First,
+            Second
+        }
     }
 }

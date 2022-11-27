@@ -1,7 +1,6 @@
 using IbragimovAA.Arcanoid;
 using UnityEngine;
 
-
 namespace bragimovAA.Arcanoid
 {
     public class CollisionTrigger : MonoBehaviour
@@ -27,12 +26,13 @@ namespace bragimovAA.Arcanoid
                     ball.ReflectZ();
                     break;
                 case TypeOfTrigger.Gate:
-                    ball.Deactivate();
+                    GameManager.instance.LoseLife();
                     break;
                 case TypeOfTrigger.Block:
                     ball.ReflectX();
                     ball.ReflectY();
                     ball.ReflectZ();
+                    ball.IncreaseSpeed();
                     gameObject.SetActive(false);
                     break;
                 default:

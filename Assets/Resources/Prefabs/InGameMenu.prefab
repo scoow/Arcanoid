@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5383075791586124957, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6178067408212312342, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -93,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6178067408212312554, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: InGameMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}

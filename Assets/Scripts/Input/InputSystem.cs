@@ -46,6 +46,15 @@ namespace IbragimovAA.Arcanoid
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""527907e1-8999-40f3-a486-d58ac28f3a86"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ namespace IbragimovAA.Arcanoid
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Launch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38f23bd7-596e-4055-8d7d-2d8ea2b41457"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -216,6 +236,7 @@ namespace IbragimovAA.Arcanoid
             m_FirstPlatform = asset.FindActionMap("FirstPlatform", throwIfNotFound: true);
             m_FirstPlatform_Movement = m_FirstPlatform.FindAction("Movement", throwIfNotFound: true);
             m_FirstPlatform_Launch = m_FirstPlatform.FindAction("Launch", throwIfNotFound: true);
+            m_FirstPlatform_Pause = m_FirstPlatform.FindAction("Pause", throwIfNotFound: true);
             // SecondPlatform
             m_SecondPlatform = asset.FindActionMap("SecondPlatform", throwIfNotFound: true);
             m_SecondPlatform_Movement = m_SecondPlatform.FindAction("Movement", throwIfNotFound: true);
@@ -281,12 +302,14 @@ namespace IbragimovAA.Arcanoid
         private IFirstPlatformActions m_FirstPlatformActionsCallbackInterface;
         private readonly InputAction m_FirstPlatform_Movement;
         private readonly InputAction m_FirstPlatform_Launch;
+        private readonly InputAction m_FirstPlatform_Pause;
         public struct FirstPlatformActions
         {
             private @InputSystem m_Wrapper;
             public FirstPlatformActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_FirstPlatform_Movement;
             public InputAction @Launch => m_Wrapper.m_FirstPlatform_Launch;
+            public InputAction @Pause => m_Wrapper.m_FirstPlatform_Pause;
             public InputActionMap Get() { return m_Wrapper.m_FirstPlatform; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -302,6 +325,9 @@ namespace IbragimovAA.Arcanoid
                     @Launch.started -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnLaunch;
                     @Launch.performed -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnLaunch;
                     @Launch.canceled -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnLaunch;
+                    @Pause.started -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_FirstPlatformActionsCallbackInterface.OnPause;
                 }
                 m_Wrapper.m_FirstPlatformActionsCallbackInterface = instance;
                 if (instance != null)
@@ -312,6 +338,9 @@ namespace IbragimovAA.Arcanoid
                     @Launch.started += instance.OnLaunch;
                     @Launch.performed += instance.OnLaunch;
                     @Launch.canceled += instance.OnLaunch;
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
                 }
             }
         }
@@ -361,6 +390,7 @@ namespace IbragimovAA.Arcanoid
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnLaunch(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface ISecondPlatformActions
         {

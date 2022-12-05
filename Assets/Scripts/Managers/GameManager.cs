@@ -27,7 +27,10 @@ namespace IbragimovAA.Arcanoid
         [SerializeField, Header("Диапазон поворота генерируемых блоков ")]
         private int _randomAngle;
 
+        private bool _gameIsStarted = false;
+
         private Players _currentPlayer;
+        private UIManager _UIManager;
         private void Awake()
         {
             instance = this;
@@ -37,6 +40,9 @@ namespace IbragimovAA.Arcanoid
         {
             _firstPlayerBallHolder = FindObjectOfType<FirstPlayerBallHolder>().transform;
             _secondPlayerBallHolder = FindObjectOfType<SecondPlayerBallHolder>().transform;
+
+            _UIManager = FindObjectOfType<UIManager>();
+            _UIManager.RedrawHPBar(_lifes);
 
             _ball = FindObjectOfType<Ball>();
             _ball.ReturnToBallHolder(_firstPlayerBallHolder);
@@ -55,11 +61,9 @@ namespace IbragimovAA.Arcanoid
         public void LoseLife()
         {
             _lifes--;
-
             _currentPlayer = (Players)(((int)_currentPlayer + 1) % 2);
-
-            Debug.Log($"Lifes left {_lifes}");
-
+            _gameIsStarted = false;
+            _UIManager.RedrawHPBar(_lifes);
             switch (_currentPlayer)
             {
                 case Players.First:
@@ -69,7 +73,6 @@ namespace IbragimovAA.Arcanoid
                     _ball.ReturnToBallHolder(_secondPlayerBallHolder);
                     break;
             }
-
             if (_lifes < 1)              
                 EndGame();
         }
@@ -82,7 +85,10 @@ namespace IbragimovAA.Arcanoid
 
         public void StartGame()
         {
+            if (_gameIsStarted)
+                return;
             _ball.Launch();
+            _gameIsStarted = true;
         }
 
         private enum Players
@@ -90,6 +96,5 @@ namespace IbragimovAA.Arcanoid
             First,
             Second
         }
-
     }
 }

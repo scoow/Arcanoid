@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 using System.Collections.Generic;
+using TMPro;
 
 namespace IbragimovAA.Arcanoid
 {
@@ -15,6 +16,7 @@ namespace IbragimovAA.Arcanoid
         private Button _buttonQuit;
 
         private Canvas _canvas;
+        private List<TextMeshProUGUI> _hpTextList;
         private void Awake()
         {
             _buttons = GetComponentsInChildren<Button>().ToList();
@@ -22,6 +24,8 @@ namespace IbragimovAA.Arcanoid
             _buttonResumeGame = _buttons.FirstOrDefault(b => b.gameObject.name == "ButtonResumeGame");
             _buttonSettings = _buttons.FirstOrDefault(b => b.gameObject.name == "ButtonSettings");
             _buttonQuit = _buttons.FirstOrDefault(b => b.gameObject.name == "ButtonQuit");
+
+            _hpTextList = FindObjectsOfType<TextMeshProUGUI>().Where(t => t.gameObject.name == "TextHPBar").ToList();
 
             _canvas = GetComponent<Canvas>();
 
@@ -50,7 +54,13 @@ namespace IbragimovAA.Arcanoid
         {
             _canvas.enabled = false;
         }
-
+        public void RedrawHPBar(int hp)
+        {
+            foreach (TextMeshProUGUI text in _hpTextList)
+            {
+                text.text = hp.ToString();
+            }
+        }
 
         private void QuitGame()
         {

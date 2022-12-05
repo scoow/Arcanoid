@@ -95,6 +95,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6178067408212312343, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178067408212312343, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178067408212312552, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178067408212312552, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178067408212312552, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6178067408212312554, guid: b04cb20e6b4264643b90a8caca3c709f, type: 3}
       propertyPath: m_Name
       value: InGameMenu

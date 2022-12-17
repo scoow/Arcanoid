@@ -31,6 +31,7 @@ namespace IbragimovAA.Arcanoid
 
         private Players _currentPlayer;
         private UIManager _UIManager;
+        private HPBar _hpBar;
         private void Awake()
         {
             instance = this;
@@ -42,7 +43,8 @@ namespace IbragimovAA.Arcanoid
             _secondPlayerBallHolder = FindObjectOfType<SecondPlayerBallHolder>().transform;
 
             _UIManager = FindObjectOfType<UIManager>();
-            _UIManager.RedrawHPBar(_lifes);
+            _hpBar = FindObjectOfType<HPBar>();
+            _hpBar.RedrawHPBar(_lifes);
 
             _ball = FindObjectOfType<Ball>();
             _ball.ReturnToBallHolder(_firstPlayerBallHolder);
@@ -63,7 +65,7 @@ namespace IbragimovAA.Arcanoid
             _lifes--;
             _currentPlayer = (Players)(((int)_currentPlayer + 1) % 2);
             _gameIsStarted = false;
-            _UIManager.RedrawHPBar(_lifes);
+            _hpBar.RedrawHPBar(_lifes);
             switch (_currentPlayer)
             {
                 case Players.First:
